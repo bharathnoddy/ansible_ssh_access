@@ -1,0 +1,14 @@
+---
+- hosts : all
+  gather_facts: no
+  remote_user: ansible_user
+  become: yes
+
+  tasks:
+
+  - name: Set authorized key in alternate location
+    authorized_key:
+      user: dev_admin
+      state: present
+      key: https://github.com/charlie.keys
+      validate_certs: False
